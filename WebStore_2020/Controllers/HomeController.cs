@@ -37,5 +37,11 @@ namespace WebStore_2020.Controllers
             //return Content("Hello from home controller");
             return View(_employees);
         }
+
+        public IActionResult Details(int id)
+        {
+            return View(_employees.FirstOrDefault(x => x.Id == id));
+        }
+
     }
 }

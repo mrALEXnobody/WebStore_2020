@@ -11,6 +11,9 @@
             <td>@item.SurName</td>
             <td>@item.FirstName</td>
             <td>@item.Patronymic</td>
+            <td>
+                @Html.ActionLink("Детали", "Details", new { id = item.Id })
+            </td>
         </tr>
     }
 
