@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WebStore_2020.Models.EmployeeViewModel>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Hello from my first view</h1>
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SurName</td>
+            <td>@item.FirstName</td>
+            <td>@item.Patronymic</td>
+        </tr>
+    }
+
+</table>

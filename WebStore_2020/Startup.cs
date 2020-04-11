@@ -22,6 +22,7 @@ namespace WebStore_2020
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
                
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -33,15 +34,19 @@ namespace WebStore_2020
 
             app.UseRouting();
 
-            var helloMsg = _configuration["CustomHelloWorld"];
+            //var helloMsg = _configuration["CustomHelloWorld"];
             //helloMsg = _configuration["Logging:LogLevel:Default"];
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync(helloMsg);
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync(helloMsg);
+                //});
             });
         }
     }
