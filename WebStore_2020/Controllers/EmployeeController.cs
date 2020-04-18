@@ -32,12 +32,14 @@ namespace WebStore_2020.Controllers
             }
         };
 
+        // GET: /<controller>/
         public IActionResult Index()
         {
             //return Content("Hello from home controller");
             return View(_employees);
         }
 
+        // GET: /<controller>/details/{id}
         public IActionResult Details(int id)
         {
             return View(_employees.FirstOrDefault(x => x.Id == id));
