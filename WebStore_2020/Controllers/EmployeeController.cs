@@ -7,7 +7,7 @@ using WebStore_2020.Models;
 
 namespace WebStore_2020.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeeController : Controller
     {
         List<EmployeeViewModel> _employees = new List<EmployeeViewModel>
         {
