@@ -49,6 +49,20 @@ namespace WebStore_2020.Controllers
         // GET: /users/edit/{id}
         public IActionResult Edit(EmployeeViewModel model)
         {
+            // Грязный способ
+
+            if (model.Age < 18 || model.Age > 100)
+            {
+                ModelState.AddModelError("Age", "Ошибка возраста");
+            }
+
+
+            // Подключение валидации
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+
             if (model.Id > 0)   // если есть Id, то редактируем модель
             {
                 var dbItem = _employeesService.GetById(model.Id);
