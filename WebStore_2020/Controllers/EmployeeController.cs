@@ -71,6 +71,16 @@ namespace WebStore_2020.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // Удаление сотрудника
+        /// <summary>
+        /// Удаление сотрудника
+        /// </summary>
+        /// <param name="id">Id сотрудника.</param>
+        /// <returns></returns>
+        [Route("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _employeesService.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
