@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using WebStore.Domain;
 using WebStore.Domain.Entities;
 
 namespace WebStore_2020.Infrastructure.Interfaces
@@ -11,5 +9,6 @@ namespace WebStore_2020.Infrastructure.Interfaces
         IEnumerable<Category> GetCategories();
 
         IEnumerable<Brand> GetBrands();
+        IEnumerable<Product> GetProducts(ProductFilter filter);
     }
 }
