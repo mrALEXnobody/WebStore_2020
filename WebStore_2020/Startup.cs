@@ -40,6 +40,8 @@ namespace WebStore_2020
             // время жизни сервиса
             // Singleton - будет жить все время жизни проекта
             services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
+            services.AddSingleton<IProductService, InMemoryProductService>();
+
             // Scoped - время жизни Http запроса
             //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();
             // Transient - пересоздает сервис при каждом запросе
