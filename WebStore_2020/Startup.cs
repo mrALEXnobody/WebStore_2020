@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.DAL;
 using WebStore_2020.Infrastructure;
 using WebStore_2020.Infrastructure.Interfaces;
 using WebStore_2020.Infrastructure.Services;
@@ -31,6 +33,9 @@ namespace WebStore_2020
             // альтернативный вариант подключения
             //options.Filters.Add(new SampleActionFilter());
             //});
+
+            services.AddDbContext<WebStoreContext>(options => options
+                .UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
             // добавляем разрешение зависимости
             // время жизни сервиса

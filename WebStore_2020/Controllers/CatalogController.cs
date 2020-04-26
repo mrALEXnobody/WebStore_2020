@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using WebStore.Domain;
+using WebStore.DomainNew;
 using WebStore_2020.Infrastructure.Interfaces;
 using WebStore_2020.Models;
 

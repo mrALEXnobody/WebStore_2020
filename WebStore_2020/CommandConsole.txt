@@ -1,0 +1,13 @@
+﻿// Создание нового проекта
+dotnet new classlib --name WebStore.DomainNew
+
+// Подключение проекта к решению
+dotnet sln "AspNet_Level_1.sln" add "WebStore.DomainNew/WebStore.DomainNew.csproj"
+
+// Подключение EF (выбрать проект)
+Install-Package Microsoft.EntityFrameworkCore
+
+// 
+Install-Package System.ComponentModel.Annotations
+
+dotnet new classlib --name WebStore.DAL

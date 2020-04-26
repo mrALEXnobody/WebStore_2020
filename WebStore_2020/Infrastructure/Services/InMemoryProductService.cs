@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebStore.Domain;
-using WebStore.Domain.Entities;
+using WebStore.DomainNew;
+using WebStore.DomainNew.Entities;
 using WebStore_2020.Infrastructure.Interfaces;
 
 namespace WebStore_2020.Infrastructure.Services
