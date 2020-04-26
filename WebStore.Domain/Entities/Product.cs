@@ -3,6 +3,9 @@ using WebStore.Domain.Entities.Base.Interfaces;
 
 namespace WebStore.Domain.Entities
 {
+    /// <summary>
+    /// Сущность продукт.
+    /// </summary>
     public class Product : NamedEntity, IOrderedEntity
     {
         public int Order { get; set; }

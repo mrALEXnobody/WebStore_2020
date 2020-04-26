@@ -6,6 +6,9 @@ using WebStore.Domain.Entities.Base.Interfaces;
 
 namespace WebStore.Domain.Entities
 {
+    /// <summary>
+    /// Сущность категория.
+    /// </summary>
     public class Category : NamedEntity, IOrderedEntity
     {
         /// <summary>
