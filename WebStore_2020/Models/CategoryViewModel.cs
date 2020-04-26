@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WebStore.Domain.Entities.Base.Interfaces;
 
 namespace WebStore_2020.Models
@@ -17,7 +14,6 @@ namespace WebStore_2020.Models
         public string Name { get; set; }
         public int Order { get; set; }
 
-
         /// <summary>
         /// Дочерние секции.
         /// </summary>
@@ -27,6 +23,5 @@ namespace WebStore_2020.Models
         /// Родительская секция.
         /// </summary>
         public CategoryViewModel ParentCategory { get; set; }
-
     }
 }

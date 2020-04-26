@@ -1,8 +1,13 @@
 ﻿namespace WebStore.Domain.Entities.Base.Interfaces
 {
+    /// <summary>
+    /// Сущность с Name.
+    /// </summary>
     public interface INamedEntity : IBaseEntity
     {
-        int Id { get; set; }
+        /// <summary>
+        /// Наименование.
+        /// </summary>
         string Name { get; set; }
     }
 }
