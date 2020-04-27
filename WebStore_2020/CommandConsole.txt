@@ -16,3 +16,17 @@ dotnet new classlib --name WebStore.DAL
 // Добавить миграцию
 Add-Migration -Project WebStore.DAL
 Name: Initial
+
+Update-Database
+
+
+Add-Migration AddedProductManufacturer
+
+// Сгенерируй скрипты после миграции Initial
+Script-Migration -From Initial
+
+
+Add-Migration AddedProductStartDate
+
+// Удаление миграции
+Remove-Migration
