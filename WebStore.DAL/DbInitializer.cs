@@ -301,9 +301,9 @@ namespace WebStore.DAL
                 }
 
                 // отключаем проверку внешних ключей
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] ON");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[ProductBrands] ON");
                 context.SaveChanges();
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] OFF");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[ProductBrands] OFF");
                 trans.Commit();
             }
 
