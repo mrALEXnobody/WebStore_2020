@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using WebStore.DAL;
+using WebStore.DomainNew.Entities;
 using WebStore_2020.Infrastructure;
 using WebStore_2020.Infrastructure.Interfaces;
 using WebStore_2020.Infrastructure.Services;
@@ -37,6 +40,39 @@ namespace WebStore_2020
             services.AddDbContext<WebStoreContext>(options => options
                 .UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
+            // подключение Identity
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<WebStoreContext>()
+                .AddDefaultTokenProviders();
+
+
+            // необязательно
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 5;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+
+                options.User.RequireUniqueEmail = true;
+            });
+
+            // необязательно
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.Expiration = TimeSpan.FromDays(150);
+            //    options.LoginPath = "/Account/Login";
+            //    options.LogoutPath = "/Account/Logout";
+            //    options.AccessDeniedPath = "/Account/AccessDenied";
+            //    options.SlidingExpiration = true;
+            //});
+
             // добавляем разрешение зависимости
             // время жизни сервиса
             // Singleton - будет жить все время жизни проекта
@@ -57,6 +93,9 @@ namespace WebStore_2020
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             // устанавливать кастомные обработчики
             app.Map("/index", CustomIndexHandler);

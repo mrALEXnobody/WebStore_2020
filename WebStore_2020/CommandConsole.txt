@@ -30,3 +30,9 @@ Add-Migration AddedProductStartDate
 
 // Удаление миграции
 Remove-Migration
+
+________________________________________________________
+
+Add-Migration IdentityAdded
+
+
