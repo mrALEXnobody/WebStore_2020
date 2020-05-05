@@ -93,6 +93,7 @@ namespace WebStore_2020
             }
 
             app.UseStaticFiles();
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -106,7 +107,7 @@ namespace WebStore_2020
             // "останавливать выполнение запроса или продолжать".
             UseSample(app);
 
-            app.UseRouting();
+            //app.UseRouting();
 
             // аналогичное подключение mvc
             //app.UseMvcWithDefaultRoute();

@@ -81,6 +81,8 @@ namespace WebStore_2020.Controllers
             }
 
             await _signInManager.SignInAsync(user, false);
+            // добавляем пользователя к группе Users
+            await _userManager.AddToRoleAsync(user, "Users");
             return RedirectToAction("Index", "Home");
         }
     }

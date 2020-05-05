@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebStore_2020.Infrastructure.Interfaces;
 using WebStore_2020.Models;
 
 namespace WebStore_2020.Controllers
 {
     [Route("users")]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeesService _employeesService;
@@ -16,6 +18,7 @@ namespace WebStore_2020.Controllers
 
         [Route("all")]
         // GET: /users/all
+        [AllowAnonymous]
         public IActionResult Index()
         {
             //return Content("Hello from home controller");
@@ -23,6 +26,7 @@ namespace WebStore_2020.Controllers
         }
 
         [Route("{id}")]
+        [Authorize(Roles = "Admins, Users")]
         // GET: /users/{id}
         public IActionResult Details(int id)
         {
@@ -31,6 +35,7 @@ namespace WebStore_2020.Controllers
 
         [Route("edit/{id?}")]
         [HttpGet]
+        [Authorize(Roles = "Admins")]
         // GET: /users/edit/{id}
         public IActionResult Edit(int? id)
         {
@@ -46,6 +51,7 @@ namespace WebStore_2020.Controllers
 
         [Route("edit/{id?}")]
         [HttpPost]
+        [Authorize(Roles = "Admins")]
         // GET: /users/edit/{id}
         public IActionResult Edit(EmployeeViewModel model)
         {
@@ -89,6 +95,7 @@ namespace WebStore_2020.Controllers
         /// <param name="id">Id сотрудника.</param>
         /// <returns></returns>
         [Route("delete/{id}")]
+        [Authorize(Roles = "Admins")]
         public IActionResult Delete(int id)
         {
             _employeesService.Delete(id);
