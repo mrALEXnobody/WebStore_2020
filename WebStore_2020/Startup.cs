@@ -63,15 +63,15 @@ namespace WebStore_2020
             });
 
             // необязательно
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.Cookie.HttpOnly = true;
-            //    options.Cookie.Expiration = TimeSpan.FromDays(150);
-            //    options.LoginPath = "/Account/Login";
-            //    options.LogoutPath = "/Account/Logout";
-            //    options.AccessDeniedPath = "/Account/AccessDenied";
-            //    options.SlidingExpiration = true;
-            //});
+            services.ConfigureApplicationCookie(options =>
+            {
+                //    options.Cookie.HttpOnly = true;
+                //    options.Cookie.Expiration = TimeSpan.FromDays(150);
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
 
             // добавляем разрешение зависимости
             // время жизни сервиса
@@ -79,6 +79,9 @@ namespace WebStore_2020
             services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
             //services.AddSingleton<IProductService, InMemoryProductService>();
             services.AddScoped<IProductService, SqlProductService >();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ICartService, CookieCartService>();
             // Scoped - время жизни Http запроса
             //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();
             // Transient - пересоздает сервис при каждом запросе

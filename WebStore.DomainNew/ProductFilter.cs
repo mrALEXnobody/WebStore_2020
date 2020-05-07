@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace WebStore.DomainNew
 {
@@ -11,5 +9,6 @@ namespace WebStore.DomainNew
     {
         public int? CategoryId { get; set; }
         public int? BrandId { get; set; }
+        public List<int> Ids { get; set; }
     }
 }
