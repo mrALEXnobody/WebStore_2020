@@ -9,5 +9,6 @@ namespace WebStore_2020.Infrastructure.Interfaces
         IEnumerable<Category> GetCategories();
         IEnumerable<Brand> GetBrands();
         IEnumerable<Product> GetProducts(ProductFilter filter);
+        Product GetProductById(int id);
     }
 }

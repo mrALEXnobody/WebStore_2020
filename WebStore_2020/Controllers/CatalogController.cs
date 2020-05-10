@@ -30,7 +30,8 @@ namespace WebStore_2020.Controllers
                     ImageUrl = p.ImageUrl,
                     Name = p.Name,
                     Order = p.Order,
-                    Price = p.Price
+                    Price = p.Price,
+                    Brand = p.Brand?.Name ?? string.Empty
                 }).OrderBy(p => p.Order)
                     .ToList()
             };
@@ -38,9 +39,22 @@ namespace WebStore_2020.Controllers
             return View(model);
         }
 
-        public IActionResult ProductDetails()
+        public IActionResult ProductDetails(int id)
         {
-            return View();
+            var product = _productService.GetProductById(id);
+
+            if (product == null)
+                return NotFound();
+
+            return View(new ProductViewModel 
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Order = product.Order,
+                ImageUrl = product.ImageUrl,
+                Price = product.Price,
+                Brand = product.Brand?.Name ?? string.Empty
+            });
         }
     }
 }

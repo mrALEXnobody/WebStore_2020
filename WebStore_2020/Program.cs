@@ -21,7 +21,7 @@ namespace WebStore_2020
             var host = BuildWebHost(args);
 
             // нужно для получения DbContext
-            using(var scope=host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
