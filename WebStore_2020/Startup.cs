@@ -79,6 +79,7 @@ namespace WebStore_2020
             services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
             //services.AddSingleton<IProductService, InMemoryProductService>();
             services.AddScoped<IProductService, SqlProductService >();
+            services.AddScoped<IOrdersService, SqlOrdersService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ICartService, CookieCartService>();
